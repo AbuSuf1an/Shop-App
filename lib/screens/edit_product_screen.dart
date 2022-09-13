@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../providers/product.dart';
+import '../providers/products.dart';
 
 class EditProductScreen extends StatefulWidget {
   static const routeName = '/edit-product';
@@ -41,13 +43,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
   void _updateImageUrl() {
     if (!_imageUrlFocusNode.hasFocus) {
-      if ((!_imageUrlController.text.startsWith('http') &&
-              !_imageUrlController.text.startsWith('https')) ||
-          (!_imageUrlController.text.endsWith('.png') &&
-              !_imageUrlController.text.endsWith('.jpg') &&
-              !_imageUrlController.text.endsWith('.jpeg'))) {
-        return;
-      }
+      // if ((!_imageUrlController.text.startsWith('http') &&
+      //         !_imageUrlController.text.startsWith('https')) ||
+      //     (!_imageUrlController.text.endsWith('.png') &&
+      //         !_imageUrlController.text.endsWith('.jpg') &&
+      //         !_imageUrlController.text.endsWith('.jpeg'))) {
+      //   return;
+      // }
       setState(() {});
     }
   }
@@ -56,11 +58,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
     final isValid = _form.currentState.validate();
     if (!isValid) return;
     _form.currentState.save();
-    print(_editedPorduct.id);
-    print(_editedPorduct.title);
-    print(_editedPorduct.price);
-    print(_editedPorduct.description);
-    print(_editedPorduct.imageUrl);
+    Provider.of<Products>(context, listen: false).addProduct(_editedPorduct);
+    Navigator.of(context).pop();
   }
 
   @override
@@ -197,15 +196,15 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         if (value.isEmpty) {
                           return 'Please Enter an image URL';
                         }
-                        if (!value.startsWith('http') &&
-                            !value.startsWith('https')) {
-                          return 'Please enter a valid URL';
-                        }
-                        if (!value.endsWith('.png') &&
-                            !value.endsWith('.jpg') &&
-                            !value.endsWith('.jpeg')) {
-                          return 'Please enter a valid image URL';
-                        }
+                        // if (!value.startsWith('http') &&
+                        //     !value.startsWith('https')) {
+                        //   return 'Please enter a valid URL';
+                        // }
+                        // if (!value.endsWith('.png') &&
+                        //     !value.endsWith('.jpg') &&
+                        //     !value.endsWith('.jpeg')) {
+                        //   return 'Please enter a valid image URL';
+                        // }
                         return null;
                       },
                       onSaved: (value) {
