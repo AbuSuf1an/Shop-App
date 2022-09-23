@@ -60,7 +60,7 @@ class AuthScreen extends StatelessWidget {
                         ],
                       ),
                       child: Text(
-                        'MyShop',
+                        'My Shop',
                         style: TextStyle(
                           color:
                               Theme.of(context).accentTextTheme.headline1.color,
