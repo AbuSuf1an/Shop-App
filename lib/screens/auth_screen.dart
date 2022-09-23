@@ -49,7 +49,7 @@ class AuthScreen extends StatelessWidget {
                       // ..translate(-10.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade900,
+                        color: Colors.deepOrange.shade700,
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,
@@ -114,6 +114,8 @@ class _AuthCardState extends State<AuthCard> {
     });
     if (_authMode == AuthMode.Login) {
       // Log user in
+      await Provider.of<Auth>(context, listen: false)
+          .login(_authData['email'], _authData['password']);
     } else {
       // Sign user up
       await Provider.of<Auth>(context, listen: false)
