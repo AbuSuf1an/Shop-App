@@ -73,12 +73,13 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  Future<void> fetchAndSetProducts() async {
+  Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
+    final filerString =
+        filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
-        'https://flutter-update-71536-default-rtdb.firebaseio.com/products.json?auth=$authToken';
+        'https://flutter-update-71536-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filerString';
     try {
       final response = await http.get(url);
-      // print(json.decode(response.body));
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       if (extractedData == null) return;
       url =
@@ -116,6 +117,7 @@ class Products with ChangeNotifier {
             'description': product.description,
             'imageUrl': product.imageUrl,
             'price': product.price,
+            'creatorId': userId,
           },
         ),
       );
