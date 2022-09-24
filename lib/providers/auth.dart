@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import '../models/http_exception.dart';
-import 'dart:async';
 
 class Auth with ChangeNotifier {
   String _token;
@@ -80,7 +80,6 @@ class Auth with ChangeNotifier {
   void _autoLogout() {
     if (_authTimer != null) {
       _authTimer.cancel();
-      _authTimer = null;
     }
     final timeToExpiry = _expiryDate.difference(DateTime.now()).inSeconds;
     _authTimer = Timer(Duration(seconds: timeToExpiry), logout);
