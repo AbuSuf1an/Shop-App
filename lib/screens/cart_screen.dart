@@ -15,48 +15,61 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Your Cart'),
       ),
-      body: Column(
-        children: [
-          Card(
-            margin: EdgeInsets.all(15),
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Total',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Spacer(),
-                  Chip(
-                    label: Text(
-                      '\$${cart.totalAmount.toStringAsFixed(2)}',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 252, 255, 64).withOpacity(0.5),
+              Color.fromARGB(255, 146, 179, 2).withOpacity(0.9),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0, 1],
+          ),
+        ),
+        child: Column(
+          children: [
+            Card(
+              margin: EdgeInsets.all(15),
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total',
+                      style: TextStyle(fontSize: 20),
                     ),
-                    backgroundColor: Theme.of(context).primaryColor,
-                  ),
-                  OrderButton(cart: cart)
-                ],
+                    Spacer(),
+                    Chip(
+                      label: Text(
+                        '\$${cart.totalAmount.toStringAsFixed(2)}',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      backgroundColor: Theme.of(context).primaryColor,
+                    ),
+                    OrderButton(cart: cart)
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: ListView.builder(
-              itemCount: cart.items.length,
-              itemBuilder: (ctx, i) => CartItem(
-                cart.items.values.toList()[i].id,
-                cart.items.keys.toList()[i],
-                cart.items.values.toList()[i].price,
-                cart.items.values.toList()[i].quantity,
-                cart.items.values.toList()[i].title,
+            SizedBox(width: 10),
+            Expanded(
+              child: ListView.builder(
+                itemCount: cart.items.length,
+                itemBuilder: (ctx, i) => CartItem(
+                  cart.items.values.toList()[i].id,
+                  cart.items.keys.toList()[i],
+                  cart.items.values.toList()[i].price,
+                  cart.items.values.toList()[i].quantity,
+                  cart.items.values.toList()[i].title,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -96,7 +109,6 @@ class _OrderButtonState extends State<OrderButton> {
               });
               widget.cart.clear();
             },
-      // textColor: Theme.of(context).primaryColor,
     );
   }
 }

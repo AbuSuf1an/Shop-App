@@ -55,8 +55,6 @@ class CartItem extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(ctx).pop(true);
                 },
-                // textColor: Colors.white,
-                // color: Theme.of(context).errorColor,
               ),
             ],
           ),

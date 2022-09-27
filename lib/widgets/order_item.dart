@@ -19,6 +19,7 @@ class _OrderItemState extends State<OrderItem> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
+      color: Colors.white,
       duration: Duration(milliseconds: 300),
       height:
           _expanded ? min(widget.order.products.length * 20.0 + 110, 200) : 95,
@@ -62,7 +63,7 @@ class _OrderItemState extends State<OrderItem> {
                           '${prod.quantity}x \$${prod.price}',
                           style: TextStyle(
                             fontSize: 18,
-                            color: Colors.grey,
+                            color: Colors.black,
                           ),
                         )
                       ],

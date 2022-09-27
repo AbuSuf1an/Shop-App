@@ -10,10 +10,11 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Color.fromARGB(255, 220, 241, 124),
       child: Column(
         children: [
           AppBar(
-            title: Text('Hello Friend!'),
+            title: Text('Organic Shop'),
             automaticallyImplyLeading: false,
           ),
           Divider(),
@@ -24,6 +25,19 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text('Favorites'),
+            onTap: () {},
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.shopping_cart),
+            title: Text('Your Cart'),
+            onTap: () {},
+          ),
+          Divider(),
           ListTile(
             leading: Icon(Icons.payment),
             title: Text('Orders'),
@@ -39,10 +53,13 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(UserProductsScreen.routeName);
-              // Navigator.of(context).pushReplacement(
-              //   CustomRoute(builder: (ctx) => OrdersScreen()),
-              // );
             },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text('My Account'),
+            onTap: () {},
           ),
           Divider(),
           ListTile(

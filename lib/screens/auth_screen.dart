@@ -23,8 +23,8 @@ class AuthScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
+                  Color.fromARGB(255, 251, 255, 0).withOpacity(0.5),
+                  Color.fromARGB(255, 0, 122, 37).withOpacity(0.9),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -40,36 +40,42 @@ class AuthScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Flexible(
-                    child: Container(
-                      margin: EdgeInsets.only(bottom: 20.0),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
-                      transform: Matrix4.rotationZ(-8 * pi / 180)
-                        ..translate(-10.0),
-                      // ..translate(-10.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade700,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                          )
-                        ],
-                      ),
-                      child: Text(
-                        'My Shop',
-                        style: TextStyle(
-                          color:
-                              Theme.of(context).accentTextTheme.headline1.color,
-                          fontSize: 50,
-                          fontFamily: 'Anton',
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
+                  // Flexible(
+                  //   child: Container(
+                  //     margin: EdgeInsets.only(bottom: 20.0),
+                  //     padding:
+                  //         EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
+                  //     transform: Matrix4.rotationZ(-8 * pi / 180)
+                  //       ..translate(-10.0),
+                  //     // ..translate(-10.0),
+                  //     decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(20),
+                  //       color: Colors.deepOrange.shade700,
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //           blurRadius: 8,
+                  //           color: Colors.black26,
+                  //           offset: Offset(0, 2),
+                  //         )
+                  //       ],
+                  //     ),
+                  //     child: Text(
+                  //       'Organic Shop',
+                  //       style: TextStyle(
+                  //         color:
+                  //             Theme.of(context).accentTextTheme.headline1.color,
+                  //         fontSize: 50,
+                  //         fontFamily: 'Anton',
+                  //         fontWeight: FontWeight.normal,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+
+                  Image.asset(
+                    'assets/images/Organic-Shop-Logo.png',
+                    height: 200,
+                    width: 500,
                   ),
                   Flexible(
                     flex: deviceSize.width > 600 ? 2 : 1,
@@ -126,7 +132,6 @@ class _AuthCardState extends State<AuthCard>
     );
     _opacityAnimation = Tween(begin: 0.0, end: 1.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
-    // _heightAnimation.addListener(() => setState(() {}));
   }
 
   @override
@@ -222,7 +227,6 @@ class _AuthCardState extends State<AuthCard>
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
         height: _authMode == AuthMode.Signup ? 320 : 260,
-        // height: _heightAnimation.value.height,
         constraints:
             BoxConstraints(minHeight: _authMode == AuthMode.Signup ? 320 : 260),
         width: deviceSize.width * 0.75,
@@ -313,7 +317,6 @@ class _AuthCardState extends State<AuthCard>
                       '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
                   onPressed: _switchAuthMode,
                   style: TextButton.styleFrom(
-                    // backgroundColor: Theme.of(context).primaryColor,
                     padding:
                         EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,

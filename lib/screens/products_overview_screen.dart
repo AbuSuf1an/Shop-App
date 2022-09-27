@@ -50,7 +50,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Shop'),
+        title: Text(
+          'Organic Shop',
+          textAlign: TextAlign.center,
+        ),
         actions: [
           Consumer<Cart>(
             builder: (_, cart, ch) => Badge(
@@ -90,7 +93,20 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       ),
       drawer: AppDrawer(),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 252, 255, 64).withOpacity(0.5),
+                    Color.fromARGB(255, 146, 179, 2).withOpacity(0.9),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0, 1],
+                ),
+              ),
+              child: Center(child: CircularProgressIndicator()),
+            )
           : ProductsGrid(_showOnlyFavorites),
     );
   }

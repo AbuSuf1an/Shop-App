@@ -28,30 +28,42 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     print('Building orders');
-    // final orderData = Provider.of<Orders>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Orders'),
       ),
       drawer: AppDrawer(),
-      body: FutureBuilder(
-        future: _ordersFuture,
-        builder: (ctx, dataSnapshot) {
-          if (dataSnapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (dataSnapshot.error != null) {
-            return Center(
-              child: Text('An error occurred!'),
-            );
-          } else {
-            return Consumer<Orders>(
-              builder: (ctx, orderData, child) => ListView.builder(
-                itemCount: orderData.orders.length,
-                itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
-              ),
-            );
-          }
-        },
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 252, 255, 64).withOpacity(0.5),
+              Color.fromARGB(255, 146, 179, 2).withOpacity(0.9),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0, 1],
+          ),
+        ),
+        child: FutureBuilder(
+          future: _ordersFuture,
+          builder: (ctx, dataSnapshot) {
+            if (dataSnapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (dataSnapshot.error != null) {
+              return Center(
+                child: Text('An error occurred!'),
+              );
+            } else {
+              return Consumer<Orders>(
+                builder: (ctx, orderData, child) => ListView.builder(
+                  itemCount: orderData.orders.length,
+                  itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }
