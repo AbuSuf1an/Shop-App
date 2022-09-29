@@ -1,3 +1,11 @@
 # Shop App
 
-A new Flutter project. In which I am creating a shop app.
+I developed this flutter app for an e-commerce store. However, more work remains on this project.
+Right now I'm focusing on a new app to learn how to use native device features (camera, maps, location, storage, etc.).
+
+Mark Twain said, "Continuous improvement is better than delayed perfection."
+
+<img src="https://user-images.githubusercontent.com/68038121/192915908-edd61594-cfc0-491c-abe1-41893e26dd60.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915924-2a36da9a-fa6a-4b3b-b1f1-9a19a42648fc.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915947-bb71420d-8757-496e-bb3a-e89321ca242b.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915964-1672f646-049a-4db5-bb14-ffe0cbaf47bb.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915971-be1c72aa-107a-400c-afd1-1c4ef25e29e1.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915986-64b1df9d-ad67-4f87-a99c-531f5318c212.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915998-c8a17f26-cd9d-4711-9050-586804131bc3.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192916013-04457aae-6b13-4ef4-8d46-21ca53d50319.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915845-bf159000-80b4-40d6-8583-f161938f07dd.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915849-223848f3-0b76-4d0d-9890-3fdefe18cdf5.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915855-37aac62d-96eb-45fb-be55-c18a79ecb9b8.png" width="320" height="320" /> <img src="https://user-images.githubusercontent.com/68038121/192915877-050e5c34-54e6-472c-9921-c2f2c6e80d6d.png" width="320" height="320" />
+
+I am using Firebase's realtime database for this app:
+<img width="683" alt="Screenshot 2022-09-27 192058" src="https://user-images.githubusercontent.com/68038121/192918231-bc0db980-5b67-4f10-b6d2-e88e38d013ba.png">
