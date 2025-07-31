@@ -50,7 +50,10 @@ class CartScreen extends StatelessWidget {
                       ),
                       backgroundColor: Theme.of(context).primaryColor,
                     ),
-                    OrderButton(cart: cart)
+                    OrderButton(
+                      cart: cart,
+                      key: ValueKey('cart_order_button'),
+                    )
                   ],
                 ),
               ),
@@ -77,8 +80,8 @@ class CartScreen extends StatelessWidget {
 
 class OrderButton extends StatefulWidget {
   const OrderButton({
-    Key key,
-    @required this.cart,
+    required Key key,
+    required this.cart,
   }) : super(key: key);
 
   final Cart cart;

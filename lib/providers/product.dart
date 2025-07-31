@@ -12,11 +12,11 @@ class Product with ChangeNotifier {
   bool isFavorite;
 
   Product({
-    @required this.id,
-    @required this.title,
-    @required this.description,
-    @required this.price,
-    @required this.imageUrl,
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.price,
+    required this.imageUrl,
     this.isFavorite = false,
   });
 
@@ -33,7 +33,7 @@ class Product with ChangeNotifier {
         'https://flutter-update-71536-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
     try {
       final response = await http.put(
-        url,
+        Uri.parse(url),
         body: json.encode(
           isFavorite,
         ),

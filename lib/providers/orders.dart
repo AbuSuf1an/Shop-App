@@ -13,10 +13,10 @@ class OrderItem {
   final DateTime dateTime;
 
   OrderItem({
-    @required this.id,
-    @required this.amount,
-    @required this.products,
-    @required this.dateTime,
+    required this.id,
+    required this.amount,
+    required this.products,
+    required this.dateTime,
   });
 }
 
@@ -34,10 +34,10 @@ class Orders with ChangeNotifier {
   Future<void> fetchAndSetOrders() async {
     final url =
         'https://flutter-update-71536-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken';
-    final response = await http.get(url);
+    final response = await http.get(Uri.parse(url));
     final List<OrderItem> loadedOrders = [];
-    final extractedData = json.decode(response.body) as Map<String, dynamic>;
-    if (extractedData == null) return;
+    final extractedData = json.decode(response.body) as Map<String, dynamic>?;
+    if (extractedData == null || extractedData.isEmpty) return;
     extractedData.forEach((orderId, orderData) {
       loadedOrders.add(
         OrderItem(
@@ -66,7 +66,7 @@ class Orders with ChangeNotifier {
         'https://flutter-update-71536-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken';
     final timestamp = DateTime.now();
     final response = await http.post(
-      url,
+      Uri.parse(url),
       body: json.encode({
         'amount': total,
         'dateTime': timestamp.toIso8601String(),

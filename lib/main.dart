@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => Auth()),
         ChangeNotifierProxyProvider<Auth, Products>(
+          create: (ctx) => Products('', '', []),
           update: (ctx, auth, previousProducts) => Products(
             auth.token,
             auth.userId,
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (ctx) => Cart()),
         ChangeNotifierProxyProvider<Auth, Orders>(
+          create: (ctx) => Orders('', '', []),
           update: (ctx, auth, previousOrders) => Orders(
             auth.token,
             auth.userId,
@@ -45,7 +47,8 @@ class MyApp extends StatelessWidget {
           title: 'Organic Shop',
           theme: ThemeData(
             primarySwatch: Colors.green,
-            accentColor: Colors.yellow[900],
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+                .copyWith(secondary: Colors.yellow[900]),
             fontFamily: 'Lato',
             pageTransitionsTheme: PageTransitionsTheme(
               builders: {
